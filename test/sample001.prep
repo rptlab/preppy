@@ -2,20 +2,39 @@
 
 <html>
 <head>
-	<title>ReportLab Perppy Test Suite 001</title>
+<title>ReportLab Preppy Test Suite 001</title>
 </head>
 
 <body>
-<h1>Preppy Test 001 - "Script" Tag</h1>
+
+<FONT COLOR=#000000>
+
+<TABLE bgColor=#0000cc border=0 cellPadding=0 cellSpacing=0 width=100% ><TBODY>
+        <TR>
+        <TD>
+<FONT COLOR=#ffffff>
+<CENTER>
+<H1>Preppy Test 001 - "Script" Tag</h1>
+</font>
+</CENTER>
+</TD>
+</TR>
+</TABLE>
+
+<BR>
 This tests the script tag with a minimal snippet of Python code.
 
-<h2>Expected Output</h2>
+<H2>Expected Output</H2>
+
 It adds 2 and 2.  you should see "4" below between the two lines.
-<hr>
+<BR><BR>
+<HR>
+<BR><CENTER>
 {{script}}
 print 2+2
 {{endscript}}
-<hr>
+</CENTER><BR>
+<HR>
 
 </body>
 </html>

@@ -1,4 +1,3 @@
-syntax: glob
 *.o
 *.lo
 *.la
@@ -39,11 +38,10 @@ test/loadsample*.*
 test/*TestFile.txt
 test/sample*.html
 
-syntax: regexp
-^devel/.*$
-^patches/.*$
-^test/innercheckIncludeOverridingStdout.prep
-^preppy.egg-info/.*
-^docs/html/.*$
-^build/.*$
-^dist/.*$
+devel/*
+patches/*
+test/innercheckIncludeOverridingStdout?prep
+preppy?egg-info/*
+docs/html/*
+build/*
+dist/*

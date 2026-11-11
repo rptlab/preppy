@@ -26,7 +26,7 @@ since unix applications may run as a different user and not have the needed
 permission to store compiled modules.
 
 """
-VERSION = '5.2.2'
+VERSION = '5.2.3'
 __version__ = VERSION
 
 USAGE = """
@@ -1045,6 +1045,8 @@ def run(dictionary, __write__=None, quoteFunc=None, outputfile=None, lquoteFunc=
     try: # compiled logic below
         # make sure quoteFunc is defined:
         qFunc, lconv = __get_conv__(quoteFunc,lquoteFunc,__isbytes__)
+        globals()['__quoteFunc__'] = qFunc
+        globals()['__lquoteFunc__'] = lconv
         # make sure __write__ is defined
         class dummyfile: pass
         if __write__:
@@ -1071,7 +1073,7 @@ def run(dictionary, __write__=None, quoteFunc=None, outputfile=None, lquoteFunc=
                     b.insert(0,ast.parse('%s=dictionary[%r]' % (k,k),'???',mode='exec').body[0])
             except:
                 pass
-        NS = dict(__quoteFunc__ = qFunc, __lquoteFunc__ = lconv, include = include)
+        NS = dict(include=include)
         __rl_exec__(compile(M,__preppy_filename__,'exec'),NS)
         NS['__code__'](dictionary,outputfile,__lwrite__,__swrite__,__save_sys_stdout__,__wss__)
     finally: #### end of compiled logic, standard cleanup

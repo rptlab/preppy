@@ -651,10 +651,15 @@ class ErrorIndicationTestCase(PreppyOutputTestCase):
         src=b"{{eval}}\ns='abc'\nS=s.upper()\n{{endeval}}"
         self.assertEqual(checkErrorTextContains('{{eval}} should end with an expression',self.getRunTimeOutput,src,quoteFunc=preppy.uStdQuote),'')
 
-    def checkErrorIndication12(self):
+    def checkErrorIndication16(self):
         src="{{s='abc'}}"
         self.maxDiff=None
         self.assertEqual(checkErrorTextContains('{{expr}} should be an expression, got Assign',self.getRunTimeOutput,src,quoteFunc=preppy.uStdQuote),'')
+
+    def checkErrorIndication17(self):
+        src="abdef {{'x'}} ghijk\n{{z|x:param}}"
+        self.maxDiff=None
+        self.assertEqual(checkErrorTextContains('z|x:param',self.getRunTimeOutput,src,quoteFunc=preppy.uStdQuote),'')
             
 
 class NewGeneratedCodeTestCase(PreppyTestCase):

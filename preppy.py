@@ -26,7 +26,7 @@ since unix applications may run as a different user and not have the needed
 permission to store compiled modules.
 
 """
-VERSION = '5.2.1'
+VERSION = '5.2.2'
 __version__ = VERSION
 
 USAGE = """
@@ -911,7 +911,11 @@ class PreppyParser:
 
     def __expr(self):
         t = self.__tokenText()
-        n = self.__rparse(t)
+        try:
+            n = self.__rparse(t)
+        except:
+            self.__serror('syntax error parsing expression')
+
         if len(n)!=1:
             self.__error('{{expr}} needs only one expression, got %d' % len(n))
         elif not isinstance(n[0],ast.Expr):
